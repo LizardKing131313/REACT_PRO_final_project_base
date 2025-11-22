@@ -46,6 +46,12 @@ export function ConfirmDialog({
   return createPortal(
     <div className={styles.backdrop} onClick={handleBackdropClick}>
       <div className={styles.dialog}>
+        <button type="button"
+                className={styles.closeButton}
+                onClick={onCancel}
+                aria-label="Закрыть">
+          ✕
+        </button>
         <div className={styles.headerStripe} />
         <div className={styles.content}>
           <div className={styles.title}>

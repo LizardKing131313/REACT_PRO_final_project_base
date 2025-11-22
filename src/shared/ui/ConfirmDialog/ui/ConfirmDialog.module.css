@@ -9,6 +9,7 @@
 }
 
 .dialog {
+  position: relative;
   width: min(92vw, 420px);
   overflow: hidden;
   background-color: #ffffff;
@@ -100,4 +101,22 @@
 .confirmButton:focus-visible {
   outline: 2px solid #111111;
   outline-offset: 2px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px;
+  color: #666666;
+  font-size: 20px;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.closeButton:hover {
+  color: #000000;
 }
