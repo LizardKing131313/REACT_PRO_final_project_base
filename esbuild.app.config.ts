@@ -68,6 +68,8 @@ async function run(): Promise<void> {
         ],
         createBodyElements: (outputUrls) => [
           '<div id="root"></div>',
+          '<div id="tooltip-root"></div>',
+          '<div id="dialog-root"></div>',
           ...outputUrls
             .filter((url) => url.endsWith('.js'))
             .map((url) => `<script type="module" src="${url}"></script>`),
