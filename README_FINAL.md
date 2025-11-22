@@ -86,3 +86,4 @@ webpack 5.102.1 compiled successfully in 11422 ms
 ![До](./screenshots/before1.png)
 ![До](./screenshots/before2.png)
 # 9. Стабилизировал сборку на Vite
+# 10. Стабилизировал сборку на EsBuild

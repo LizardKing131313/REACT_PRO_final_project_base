@@ -21,7 +21,6 @@ function hasServeFlag(): boolean {
 async function run(): Promise<void> {
   const isProd = getCliMode() === 'prod'
   const out = path.resolve('dist/esbuild')
-  // noinspection HtmlUnknownTarget
   const common: BuildOptions = {
     entryPoints: [path.resolve('src/index.tsx')],
     outdir: out,
@@ -34,12 +33,15 @@ async function run(): Promise<void> {
     sourcemap: true,
     minify: isProd,
     logLevel: 'info',
-    define: { 'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development') },
+    define: {
+      'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL ?? ''),
+    },
     entryNames: 'app',
     chunkNames: 'chunks/[name]-[hash]',
     assetNames: 'assets/[name]-[hash]',
     metafile: true,
-    loader: { '.css': 'css', '.svg': 'file' },
+    loader: { '.css': 'css', '.svg': 'dataurl' },
     plugins: [
       svgrPlugin({
         exportType: 'named',

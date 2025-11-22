@@ -31,6 +31,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^17.2.3",
     "esbuild": "^0.25.2",
+    "esbuild-css-modules-plugin": "^3.1.5",
     "esbuild-html-plugin": "^1.1.0",
     "esbuild-plugin-copy": "^2.1.1",
     "esbuild-plugin-svgr": "^3.1.1",

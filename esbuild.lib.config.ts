@@ -1,4 +1,6 @@
+import type { BuildOptions } from 'esbuild'
 import { build } from 'esbuild'
+import svgrPlugin from 'esbuild-plugin-svgr'
 import fg from 'fast-glob'
 import path from 'node:path'
 
@@ -24,10 +26,10 @@ if (entryPoints.length === 0) {
   console.warn('Не нашёл ни одного index')
 }
 
-const common = {
+const common: BuildOptions = {
   entryPoints,
   bundle: true,
-  platform: 'neutral' as const,
+  platform: 'neutral',
   target: ['es2018'],
   sourcemap: true,
   external: [
@@ -47,12 +49,26 @@ const common = {
     'react-toastify',
     'redux',
     'yup',
+    'react-router',
+    'react-router-dom',
   ],
-  logLevel: 'info' as const,
+  logLevel: 'info',
   metafile: true,
   treeShaking: true,
   minify: isProd,
   outbase: 'src',
+
+  loader: {
+    '.css': 'css',
+    '.svg': 'dataurl',
+  },
+
+  plugins: [
+    svgrPlugin({
+      exportType: 'named',
+      icon: true,
+    }),
+  ],
 }
 
 async function run(): Promise<void> {
