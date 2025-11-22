@@ -1,11 +1,3 @@
-import { CartPage } from 'pages/CartPage'
-import { FavoritesPage } from 'pages/FavoritesPage'
-import { HomePage } from 'pages/HomePage'
-import { NotFoundPage } from 'pages/NotFoundPage'
-import { ProductPage } from 'pages/ProductPage'
-import { ProfilePage } from 'pages/ProfilePage'
-import { SignInPage } from 'pages/SignInPage'
-import { SignUpPage } from 'pages/SignUpPage'
 import { createBrowserRouter } from 'react-router-dom'
 
 import { Layout } from './Layout'
@@ -39,37 +31,61 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        async lazy() {
+          const { HomePage } = await import('pages/HomePage')
+          return { Component: HomePage }
+        },
       },
       {
         path: RoutePath.favorites,
-        element: <FavoritesPage />,
+        async lazy() {
+          const { FavoritesPage } = await import('pages/FavoritesPage')
+          return { Component: FavoritesPage }
+        },
       },
       {
         path: RoutePath.products,
-        element: <ProductPage />,
+        async lazy() {
+          const { ProductPage } = await import('pages/ProductPage')
+          return { Component: ProductPage }
+        },
       },
       {
         path: RoutePath.profile,
-        element: <ProfilePage />,
+        async lazy() {
+          const { ProfilePage } = await import('pages/ProfilePage')
+          return { Component: ProfilePage }
+        },
       },
       {
         path: RoutePath.cart,
-        element: <CartPage />,
+        async lazy() {
+          const { CartPage } = await import('pages/CartPage')
+          return { Component: CartPage }
+        },
       },
       {
         path: RoutePath.signup,
-        element: <SignUpPage />,
+        async lazy() {
+          const { SignUpPage } = await import('pages/SignUpPage')
+          return { Component: SignUpPage }
+        },
       },
       {
         path: RoutePath.signin,
-        element: <SignInPage />,
+        async lazy() {
+          const { SignInPage } = await import('pages/SignInPage')
+          return { Component: SignInPage }
+        },
       },
 
       // last route
       {
         path: RoutePath.not_found,
-        element: <NotFoundPage />,
+        async lazy() {
+          const { NotFoundPage } = await import('pages/NotFoundPage')
+          return { Component: NotFoundPage }
+        },
       },
     ],
   },
