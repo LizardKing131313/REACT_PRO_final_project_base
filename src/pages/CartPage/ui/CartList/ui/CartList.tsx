@@ -1,16 +1,18 @@
-import { CartItem } from '../../CartItem';
-import s from '../../CartPage.module.css';
-import classNames from 'classnames';
+import classNames from 'classnames'
+
+import { CartItem } from '../../CartItem'
+
+import * as styles from '../../CartPage.module.css'
+
+const s = styles as unknown as Record<string, string>
 
 type CartListProps = {
-	products: CartProduct[];
-};
-export const CartList = ({ products }: CartListProps) => {
-	return (
-		<div className={classNames(s['cart-list'])}>
-			{products.map((p) => (
-				<CartItem product={p} key={p.id} />
-			))}
-		</div>
-	);
-};
+  products: CartProduct[]
+}
+export const CartList = ({ products }: CartListProps) => (
+  <div className={classNames(s['cart-list'])}>
+    {products.map((p) => (
+      <CartItem product={p} key={p.id} />
+    ))}
+  </div>
+)

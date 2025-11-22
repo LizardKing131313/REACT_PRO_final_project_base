@@ -1,4 +1,5 @@
 const HTMLWebpackPlugins = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -68,13 +69,23 @@ module.exports = {
 			},
 		],
 	},
-	resolve: {
-		extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'], //указываем файлы с которыми будет работать webpack
-	},
+  resolve: {
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'],
+    modules: [path.resolve(__dirname, '..', 'src'), 'node_modules'],
+  },
 	plugins: [
 		new HTMLWebpackPlugins({
 			template: path.resolve(__dirname, '..', './public/index.html'),
+      favicon: path.resolve(__dirname, '..', './public/favicon.svg'),
 		}),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '..', 'public/robots.txt'),
+          to: '',
+        },
+      ],
+    }),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({
 			filename: production

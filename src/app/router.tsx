@@ -1,16 +1,16 @@
+import { CartPage } from 'pages/CartPage'
+import { FavoritesPage } from 'pages/FavoritesPage'
+import { HomePage } from 'pages/HomePage'
+import { NotFoundPage } from 'pages/NotFoundPage'
+import { ProductPage } from 'pages/ProductPage'
+import { ProfilePage } from 'pages/ProfilePage'
+import { SignInPage } from 'pages/SignInPage'
+import { SignUpPage } from 'pages/SignUpPage'
 import { createBrowserRouter } from 'react-router-dom'
 
-import { App } from '../../../../app'
-import { CartPage } from '../../../../pages/CartPage'
-import { FavoritesPage } from '../../../../pages/FavoritesPage'
-import { HomePage } from '../../../../pages/HomePage'
-import { NotFoundPage } from '../../../../pages/NotFoundPage'
-import { ProductPage } from '../../../../pages/ProductPage'
-import { ProfilePage } from '../../../../pages/ProfilePage'
-import { SignInPage } from '../../../../pages/SignInPage'
-import { SignUpPage } from '../../../../pages/SignUpPage'
+import { Layout } from './Layout'
 
-export enum AppRoutes {
+enum AppRoutes {
   HOME = 'home',
   FAVORITES = 'favorites',
   PRODUCTS = 'products',
@@ -21,7 +21,7 @@ export enum AppRoutes {
   NOT_FOUND = 'not_found',
 }
 
-export const RoutePath: Record<AppRoutes, `/${string}` | '*'> = {
+const RoutePath: Record<AppRoutes, `/${string}` | '*'> = {
   [AppRoutes.HOME]: '/',
   [AppRoutes.FAVORITES]: '/favorites',
   [AppRoutes.PRODUCTS]: '/products/:productId',
@@ -35,7 +35,7 @@ export const RoutePath: Record<AppRoutes, `/${string}` | '*'> = {
 export const router = createBrowserRouter([
   {
     path: RoutePath.home,
-    element: <App />,
+    element: <Layout />,
     children: [
       {
         index: true,

@@ -1,0 +1,13 @@
+export { default as back } from './icons/back.svg'
+export { default as like } from './icons/like.svg'
+export { default as quality } from './icons/quality.svg'
+export { default as star } from './icons/star.svg'
+export { ReactComponent as TrashIcon } from './icons/trash.svg'
+export { default as truck } from './icons/truck.svg'
+
+export { default as instagram } from './images/instagram.svg'
+export { default as telegram } from './images/telegram.svg'
+export { default as viber } from './images/viber.svg'
+export { default as vk } from './images/vk.svg'
+export { default as whatsapp } from './images/whatsapp.svg'
+export { default as logo } from './images/logo.svg'

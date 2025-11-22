@@ -1,6 +1,7 @@
 import { build, context, type BuildOptions } from 'esbuild'
 import { htmlPlugin } from 'esbuild-html-plugin'
 import copy from 'esbuild-plugin-copy'
+import svgrPlugin from 'esbuild-plugin-svgr'
 import tailwindPlugin from 'esbuild-plugin-tailwindcss'
 import path from 'node:path'
 import process from 'node:process'
@@ -23,7 +24,7 @@ async function run(): Promise<void> {
   const out = path.resolve('dist/esbuild')
   // noinspection HtmlUnknownTarget
   const common: BuildOptions = {
-    entryPoints: [path.resolve('src/main.tsx')],
+    entryPoints: [path.resolve('src/index.tsx')],
     outdir: out,
     bundle: true,
     splitting: true,
@@ -41,6 +42,10 @@ async function run(): Promise<void> {
     metafile: true,
     loader: { '.css': 'css', '.svg': 'file' },
     plugins: [
+      svgrPlugin({
+        exportType: 'named',
+        icon: true,
+      }),
       tailwindPlugin(),
       copy({
         assets: {
@@ -54,12 +59,12 @@ async function run(): Promise<void> {
         createHeadElements: (outputUrls) => [
           '<meta charset="utf-8" />',
           '<meta name="viewport" content="width=device-width, initial-scale=1" />',
-          '<meta name="description" content="Test React FSD">',
+          '<meta name="description" content="Dog food market">',
           '<link rel="icon" type="image/svg" href="favicon.svg" />',
           ...outputUrls
             .filter((url) => url.endsWith('.css'))
             .map((url) => `<link rel="stylesheet" href="${url}">`),
-          '<title>ESBuild + React + TS + FSD</title>'
+          '<title>Dog Food</title>'
         ],
         createBodyElements: (outputUrls) => [
           '<div id="root"></div>',

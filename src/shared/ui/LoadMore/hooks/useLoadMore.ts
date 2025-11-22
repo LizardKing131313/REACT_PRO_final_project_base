@@ -1,47 +1,48 @@
-import { RefObject, useCallback, useLayoutEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../store/utils';
-import { useProducts } from '../../../store/hooks/useProducts';
-import {
-	productsActions,
-	productsSelectors,
-} from '../../../store/slices/products';
+import type { RefObject } from 'react'
+import { useCallback, useLayoutEffect } from 'react'
 
-interface UseLoadMoreParams {
-	ref: RefObject<HTMLDivElement>;
+import { useProducts } from '../../../store/hooks/useProducts'
+import { productsActions, productsSelectors } from '../../../store/slices/products'
+import { useAppDispatch, useAppSelector } from '../../../store/utils'
+
+type UseLoadMoreParams = {
+  ref: RefObject<HTMLElement | null>
 }
 export const useLoadMore = ({ ref }: UseLoadMoreParams) => {
-	const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-	const { products, isFetching, productsCount } = useProducts();
+  const { products, isFetching, productsCount } = useProducts()
 
-	const page = useAppSelector(productsSelectors.getPage);
+  const page = useAppSelector(productsSelectors.getPage)
 
-	const isEndOfList = products.length >= productsCount;
+  const isEndOfList = products.length >= productsCount
 
-	const fetchMoreProducts = useCallback(() => {
-		if (!isEndOfList && !isFetching) {
-			dispatch(productsActions.setPage(page + 1));
-		}
-	}, [isEndOfList, isFetching, page, dispatch]);
+  const fetchMoreProducts = useCallback(() => {
+    if (!isEndOfList && !isFetching) {
+      dispatch(productsActions.setPage(page + 1))
+    }
+  }, [isEndOfList, isFetching, page, dispatch])
 
-	useLayoutEffect(() => {
-		let observer: IntersectionObserver | undefined = undefined;
+  useLayoutEffect(() => {
+    let observer: IntersectionObserver | undefined
 
-		if (!isEndOfList && products.length) {
-			const options: IntersectionObserverInit = { threshold: 0.5 };
-			const callback: IntersectionObserverCallback = (entries) => {
-				if (entries[0].isIntersecting) {
-					fetchMoreProducts();
-				}
-			};
-			observer = new IntersectionObserver(callback, options);
-			ref.current && observer.observe(ref.current);
-		}
+    if (!isEndOfList && products.length) {
+      const options: IntersectionObserverInit = { threshold: 0.5 }
+      const callback: IntersectionObserverCallback = (entries) => {
+        if (entries[0]?.isIntersecting) {
+          fetchMoreProducts()
+        }
+      }
+      observer = new IntersectionObserver(callback, options)
+      if (ref.current) {
+        observer.observe(ref.current)
+      }
+    }
 
-		return () => {
-			observer?.disconnect();
-		};
-	}, [fetchMoreProducts, isEndOfList, products.length, ref]);
+    return () => {
+      observer?.disconnect()
+    }
+  }, [fetchMoreProducts, isEndOfList, products.length, ref])
 
-	return { isEndOfList, isFetching };
-};
+  return { isEndOfList, isFetching }
+}

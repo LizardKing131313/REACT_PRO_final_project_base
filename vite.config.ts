@@ -14,10 +14,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ['react', 'react-dom'],
+          react: ['react', 'react-dom', 'react-toastify'],
+          emotion: ['@emotion/react', '@emotion/styled'],
+          mui: ['@mui/icons-material', '@mui/lab', '@mui/material', 'classnames'],
           redux: ['redux', 'react-redux', '@reduxjs/toolkit'],
           router: ['react-router-dom'],
-          form: ['react-hook-form', '@hookform/resolvers', 'zod', 'framer-motion']
+          form: ['react-hook-form', '@hookform/resolvers', 'framer-motion', 'yup']
         },
       },
     },

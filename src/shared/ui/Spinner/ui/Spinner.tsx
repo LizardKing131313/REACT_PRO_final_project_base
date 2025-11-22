@@ -1,15 +1,16 @@
-import classNames from 'classnames';
-import s from './Spinner.module.css';
+import classNames from 'classnames'
 
-export const Spinner = () => {
-	return (
-		<div className={classNames(s['wrapper'])}>
-			<div className={classNames(s['loader'])}>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-		</div>
-	);
-};
+import * as styles from './Spinner.module.css'
+
+const s = styles as unknown as Record<string, string>
+
+export const Spinner = () => (
+  <div className={classNames(s['wrapper'])}>
+    <div className={classNames(s['loader'])}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+)

@@ -1,41 +1,40 @@
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useDebounce } from '../../../hooks/useDebounce';
-import { useAppDispatch } from '../../../store/utils';
-import { productsActions } from '../../../store/slices/products';
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-const QUERY_SEARCH_PHRASE = 'q';
+import { useDebounce } from '../../../hooks/useDebounce'
+import { productsActions } from '../../../store/slices/products'
+import { useAppDispatch } from '../../../store/utils'
 
-export interface UseProductsSearchFormParams {
-	setProductsSearchFilter: (newFilter: string) => void;
+const QUERY_SEARCH_PHRASE = 'q'
+
+export type UseProductsSearchFormParams = {
+  setProductsSearchFilter: (newFilter: string) => void
 }
 
 export const useProductsSearchForm = () => {
-	const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-	const [searchParams, setSearchParams] = useSearchParams();
-	const [searchValue, setSearchValue] = useState(
-		() => searchParams.get(QUERY_SEARCH_PHRASE) ?? ''
-	);
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchValue, setSearchValue] = useState(() => searchParams.get(QUERY_SEARCH_PHRASE) ?? '')
 
-	const optimizedValue = useDebounce(searchValue, 500);
+  const optimizedValue = useDebounce(searchValue, 500)
 
-	useEffect(() => {
-		dispatch(productsActions.setSearchText(optimizedValue));
-	}, [optimizedValue, dispatch]);
+  useEffect(() => {
+    dispatch(productsActions.setSearchText(optimizedValue))
+  }, [optimizedValue, dispatch])
 
-	useEffect(() => {
-		if (searchValue) {
-			searchParams.set(QUERY_SEARCH_PHRASE, searchValue);
-		} else {
-			searchParams.delete(QUERY_SEARCH_PHRASE);
-		}
+  useEffect(() => {
+    if (searchValue) {
+      searchParams.set(QUERY_SEARCH_PHRASE, searchValue)
+    } else {
+      searchParams.delete(QUERY_SEARCH_PHRASE)
+    }
 
-		setSearchParams(searchParams);
-	}, [searchParams, searchValue, setSearchParams]);
+    setSearchParams(searchParams)
+  }, [searchParams, searchValue, setSearchParams])
 
-	return {
-		searchValue,
-		setSearchValue,
-	};
-};
+  return {
+    searchValue,
+    setSearchValue,
+  }
+}

@@ -25,14 +25,17 @@ export default defineConfig([
     '.idea',
     '.vite',
     'eslint.config.js',
+    'public',
+    'webpack/*.cjs',
+    '**/*.d.ts',
+    '*.cjs',
   ]),
 
   prettier,
   js.configs.recommended,
-  reactHooks.configs['recommended-latest'],
   reactRefresh.configs.vite,
 
-  ...tseslint.configs.recommended,
+  ...tseslint.configs.strict,
 
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
@@ -50,6 +53,7 @@ export default defineConfig([
       sonarjs,
       promise,
       '@conarti/feature-sliced': featureSliced,
+      'react-hooks': reactHooks,
     },
 
     rules: {

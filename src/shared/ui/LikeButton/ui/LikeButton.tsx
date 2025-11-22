@@ -1,52 +1,57 @@
-import s from './LikeButton.module.css';
-import { ReactComponent as LikeSvg } from './../../../assets/icons/like.svg';
-import classNames from 'classnames';
-import { useAppSelector } from '../../../store/utils';
-import { userSelectors } from '../../../store/slices/user';
+import classNames from 'classnames'
+import { toast } from 'react-toastify'
+
+import type { IErrorResponse } from '../../../store/api/productsApi'
 import {
-	useSetLikeProductMutation,
-	useDeleteLikeProductMutation,
-	IErrorResponse,
-} from '../../../store/api/productsApi';
-import { toast } from 'react-toastify';
+  useSetLikeProductMutation,
+  useDeleteLikeProductMutation,
+} from '../../../store/api/productsApi'
+import { userSelectors } from '../../../store/slices/user'
+import { useAppSelector } from '../../../store/utils'
+import { ReactComponent as LikeSvg } from './../../../assets/icons/like.svg'
+
+import * as styles from './LikeButton.module.css'
+
+const s = styles as unknown as Record<string, string>
 
 type TLikeButtonProps = {
-	product: Product;
-};
+  product: Product
+}
 export const LikeButton = ({ product }: TLikeButtonProps) => {
-	const accessToken = useAppSelector(userSelectors.getAccessToken);
-	const user = useAppSelector(userSelectors.getUser);
+  const accessToken = useAppSelector(userSelectors.getAccessToken)
+  const user = useAppSelector(userSelectors.getUser)
 
-	const [setLike] = useSetLikeProductMutation();
-	const [deleteLike] = useDeleteLikeProductMutation();
+  const [setLike] = useSetLikeProductMutation()
+  const [deleteLike] = useDeleteLikeProductMutation()
 
-	const isLike = product?.likes.some((l) => l.userId === user?.id);
+  const isLike = product?.likes.some((l) => l.userId === user?.id)
 
-	const toggleLike = async () => {
-		if (!accessToken) {
-			toast.warning('Вы не авторизованы');
-			return;
-		}
-		let response;
-		if (isLike) {
-			response = await deleteLike({ id: `${product.id}` });
-		} else {
-			response = await setLike({ id: `${product.id}` });
-		}
+  const toggleLike = async () => {
+    if (!accessToken) {
+      toast.warning('Вы не авторизованы')
+      return
+    }
+    let response
+    if (isLike) {
+      response = await deleteLike({ id: `${product.id}` })
+    } else {
+      response = await setLike({ id: `${product.id}` })
+    }
 
-		if (response.error) {
-			const error = response.error as IErrorResponse;
-			toast.error(error.data.message);
-		}
-	};
+    if (response.error) {
+      const error = response.error as IErrorResponse
+      toast.error(error.data.message)
+    }
+  }
 
-	return (
-		<button
-			className={classNames(s['card__favorite'], {
-				[s['card__favorite_is-active']]: isLike,
-			})}
-			onClick={toggleLike}>
-			<LikeSvg />
-		</button>
-	);
-};
+  return (
+    <button
+      className={classNames(s['card__favorite'], {
+        [s['card__favorite_is-active'] ?? '']: isLike,
+      })}
+      onClick={toggleLike}
+    >
+      <LikeSvg />
+    </button>
+  )
+}
