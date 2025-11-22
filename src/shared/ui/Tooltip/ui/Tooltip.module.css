@@ -1,0 +1,29 @@
+.trigger {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  padding: 8px 10px;
+  color: #000000;
+  font-size: 12px;
+  line-height: 1.4;
+  background-color: #ffe44d;
+  border-radius: 55px;
+  box-shadow:
+    0 2px 4px rgb(40 41 61 / 4%),
+    0 8px 16px rgb(96 97 112 / 16%);
+  will-change: opacity, transform;
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
+}
