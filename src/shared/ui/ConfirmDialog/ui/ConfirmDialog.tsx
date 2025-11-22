@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 import styles from './ConfirmDialog.module.css'
@@ -21,6 +21,17 @@ export function ConfirmDialog({
                                 onCancel,
                               }: Props) {
   const root = document.getElementById('dialog-root')
+
+  useEffect(() => {
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        onCancel()
+      }
+    }
+
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [onCancel])
 
   if (!root) {
     return null
