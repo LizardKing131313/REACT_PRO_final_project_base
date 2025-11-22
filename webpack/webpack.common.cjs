@@ -1,7 +1,7 @@
 const HTMLWebpackPlugins = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path'); //для того чтобы превратить отнсительный путь в абсолютный мы будем использовать пакет path
+const path = require('path');
 const webpack = require('webpack');
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
@@ -26,8 +26,6 @@ module.exports = {
 						loader: 'ts-loader',
 					},
 				], // для того чтобы ts-loader корректно отработал нам нужен tsconfig его можно создать вручную, а можно создать автоматически
-				/** чтобы проиницилизовать его автоматически можно установить пакет typesctipt глобально или использовать npx выполнив команду npx tsc --init
-				После создания конфига нужно включить "allowJs": true, чтобы работать не только c typescript, также меняем "jsx": "react" чтобы мы могли работать с react компонентами и включаем карту ресурсов "sourceMap": true, пока на этом все вернемся в этот конфиг позже*/
 				exclude: /node_modules/,
 			},
 			{
@@ -60,7 +58,8 @@ module.exports = {
 								mode: 'local',
 								localIdentName: '[name]__[local]__[hash:base64:5]',
 								auto: /\.module\.\w+$/i,
-							},
+                namedExport: true,
+              },
 							importLoaders: 1, //Значение 1 говорит о том, что некоторые трансформации PostCSS нужно применить до css-loader.
 						},
 					},
