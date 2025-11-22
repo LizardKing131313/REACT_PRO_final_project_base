@@ -89,3 +89,4 @@ webpack 5.102.1 compiled successfully in 11422 ms
 # 10. Стабилизировал сборку на EsBuild
 # 11. Ленивый роутинг
 # 12. Добавил кастомный тултип через React Portal
+# 13. Добавил модальный диалог через React Portal

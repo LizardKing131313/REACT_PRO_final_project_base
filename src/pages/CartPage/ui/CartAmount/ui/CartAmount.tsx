@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { useConfirmDialog } from 'shared/ui/ConfirmDialog'
 
 import * as styles from '../../CartPage.module.css'
 
@@ -11,10 +12,23 @@ export const CartAmount = ({ products }: CartAmountProps) => {
   const allPrice = products.reduce((acc, p) => p.price * p.count + acc, 0)
   const allDiscount = products.reduce((acc, p) => p.discount * p.count + acc, 0)
 
-  const handleSubmitCart = () => {
-    const order = products.map((p) => ({ id: p.id, count: p.count }))
-    // eslint-disable-next-line
-    console.log('Отправка заказа на сервер: ', JSON.stringify(order, null, 2))
+  const showConfirmDialog = useConfirmDialog()
+
+  async function handleSubmitCart() {
+    const confirmed = await showConfirmDialog({
+      title: 'Оформить заказ?',
+      description: 'Вы уверенны, что хотите оформить заказ на сумму ' + (allPrice - allDiscount) + '₽?',
+    })
+
+    if (confirmed) {
+      const order = products.map((product) => ({
+        id: product.id,
+        count: product.count
+      }))
+      alert('Отправка заказа на сервер: ' + JSON.stringify(order, null, 2))
+    } else {
+      alert('Заказ отменен')
+    }
   }
 
   return (
@@ -45,10 +59,8 @@ export const CartAmount = ({ products }: CartAmountProps) => {
           {`${allPrice - allDiscount} ₽`}
         </span>
       </div>
-      <button
-        onClick={handleSubmitCart}
-        className={classNames(s['button'], s['button_type_primary'], s['button_type_wide'])}
-      >
+      <button onClick={handleSubmitCart}
+              className={classNames(s['button'], s['button_type_primary'], s['button_type_wide'])}>
         Оформить заказ
       </button>
     </div>

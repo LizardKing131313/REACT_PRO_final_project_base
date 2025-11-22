@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
 import { store } from 'shared/store/store'
+import { ConfirmDialogProvider } from 'shared/ui/ConfirmDialog'
 
 import { router } from './router'
 
@@ -10,6 +11,8 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export const App = () => (
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <ConfirmDialogProvider>
+      <RouterProvider router={router} />
+    </ConfirmDialogProvider>
   </Provider>
 )
