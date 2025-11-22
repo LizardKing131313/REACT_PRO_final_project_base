@@ -1,4 +1,4 @@
-import { ReactComponent as Star } from '../../../assets/icons/star.svg'
+import { StarIcon } from '../../../assets'
 
 type TRating = {
   rating?: number
@@ -9,7 +9,7 @@ export const Rating = ({ rating = 0, isEdit = false, onChange }: TRating) => (
   <div>
     {[...Array(5)].map((_e, i) => (
       <span key={i} style={{ cursor: isEdit ? 'pointer' : 'default' }}>
-        <Star onClick={() => onChange?.(i)} fill={i <= rating ? 'gold' : 'gray'} />
+        <StarIcon onClick={() => onChange?.(i)} fill={i <= rating ? 'gold' : 'gray'} />
       </span>
     ))}
   </div>

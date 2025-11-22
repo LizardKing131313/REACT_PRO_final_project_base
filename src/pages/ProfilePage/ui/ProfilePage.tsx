@@ -4,7 +4,7 @@ import { ButtonBack } from 'shared/ui/ButtonBack'
 
 import * as styles from './ProfilePage.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 export const ProfilePage = WithProtection(() => (
   <>

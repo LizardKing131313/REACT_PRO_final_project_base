@@ -2,7 +2,7 @@ import { Card } from 'shared/ui/Card'
 
 import * as styles from './CardList.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 type CardListProps = {
   title: string

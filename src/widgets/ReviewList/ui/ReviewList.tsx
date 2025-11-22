@@ -5,7 +5,7 @@ import { ReviewForm } from './ReviewForm/ReviewForm'
 
 import * as styles from './ReviewList.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 type ReviewListProps = {
   product: Product

@@ -4,7 +4,7 @@ import { Logo } from 'shared/ui/Logo'
 
 import * as styles from './Footer.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 export const Footer = () => (
   <footer className={s.footer}>

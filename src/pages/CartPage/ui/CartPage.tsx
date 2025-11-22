@@ -7,7 +7,7 @@ import { CartList } from './CartList'
 
 import * as styles from './CartPage.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 export const CartPage = () => {
   const products = useAppSelector(cartSelectors.getCartProducts)

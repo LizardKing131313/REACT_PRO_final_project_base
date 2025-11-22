@@ -4,7 +4,7 @@ import { useCount } from '../hooks/useCount'
 
 import * as styles from './CartCounter.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 type TCartCounter = {
   productId: string

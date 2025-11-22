@@ -1,8 +1,7 @@
 {
 	"extends": [
     "stylelint-config-standard",
-    "stylelint-config-recommended",
-    "stylelint-config-tailwindcss"
+    "stylelint-config-recommended"
   ],
 	"plugins": ["stylelint-order"],
 	"rules": {
@@ -26,7 +25,7 @@
 		"media-feature-name-no-unknown": true,
 		"at-rule-no-unknown":  [
 			true,
-			{ "ignoreAtRules": ["tailwind", "theme"] }
+			{ "ignoreAtRules": ["theme"] }
 		],
 		"comment-no-empty": true,
 		"no-empty-source": true,

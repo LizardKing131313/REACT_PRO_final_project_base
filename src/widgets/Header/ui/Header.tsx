@@ -10,7 +10,7 @@ import { isLiked } from 'shared/utils'
 
 import * as styles from './Header.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 export const Header = () => {
   const { products } = useProducts()

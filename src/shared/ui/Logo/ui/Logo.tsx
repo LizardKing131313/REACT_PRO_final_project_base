@@ -4,7 +4,7 @@ import { logo } from '../../../assets'
 
 import * as styles from './Logo.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 export const Logo = () => (
   <Link to="/">

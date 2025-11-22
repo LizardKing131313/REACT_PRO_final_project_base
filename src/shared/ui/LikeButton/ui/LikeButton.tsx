@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { toast } from 'react-toastify'
 
+import { LikeIcon } from '../../../assets'
 import type { IErrorResponse } from '../../../store/api/productsApi'
 import {
   useSetLikeProductMutation,
@@ -8,11 +9,10 @@ import {
 } from '../../../store/api/productsApi'
 import { userSelectors } from '../../../store/slices/user'
 import { useAppSelector } from '../../../store/utils'
-import { ReactComponent as LikeSvg } from './../../../assets/icons/like.svg'
 
 import * as styles from './LikeButton.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 type TLikeButtonProps = {
   product: Product
@@ -51,7 +51,7 @@ export const LikeButton = ({ product }: TLikeButtonProps) => {
       })}
       onClick={toggleLike}
     >
-      <LikeSvg />
+      <LikeIcon />
     </button>
   )
 }

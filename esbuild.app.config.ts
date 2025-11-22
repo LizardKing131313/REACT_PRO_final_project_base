@@ -2,7 +2,6 @@ import { build, context, type BuildOptions } from 'esbuild'
 import { htmlPlugin } from 'esbuild-html-plugin'
 import copy from 'esbuild-plugin-copy'
 import svgrPlugin from 'esbuild-plugin-svgr'
-import tailwindPlugin from 'esbuild-plugin-tailwindcss'
 import path from 'node:path'
 import process from 'node:process'
 
@@ -46,7 +45,6 @@ async function run(): Promise<void> {
         exportType: 'named',
         icon: true,
       }),
-      tailwindPlugin(),
       copy({
         assets: {
           from: ['./public/*'],

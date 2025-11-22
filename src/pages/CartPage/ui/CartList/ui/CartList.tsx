@@ -4,7 +4,7 @@ import { CartItem } from '../../CartItem'
 
 import * as styles from '../../CartPage.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 type CartListProps = {
   products: CartProduct[]

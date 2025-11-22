@@ -85,3 +85,4 @@ webpack 5.102.1 compiled successfully in 11422 ms
 # 8. Запись профайлера исходного приложения
 ![До](./screenshots/before1.png)
 ![До](./screenshots/before2.png)
+# 9. Стабилизировал сборку на Vite

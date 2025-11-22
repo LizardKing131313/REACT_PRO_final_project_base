@@ -7,7 +7,7 @@ import { CartCounter } from 'shared/ui/CartCounter'
 
 import * as styles from '../../CartPage.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 type CartItemProps = {
   product: CartProduct

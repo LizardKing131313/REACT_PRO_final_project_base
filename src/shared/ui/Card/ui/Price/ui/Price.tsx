@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 import * as styles from './Price.module.css'
 
-const s = styles as unknown as Record<string, string>
+const s = ((styles as any).default ?? styles) as Record<string, string>
 
 type TPriceProps = {
   price: number
