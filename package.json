@@ -93,6 +93,7 @@
     "commit": "npm test && cz",
     "dev": "vite",
     "preview": "vite preview",
+    "vite-build": "tsc -b && vite build",
     "es:app:dev": "tsx esbuild.app.config.ts --mode=dev",
     "es:app:serve": "tsx esbuild.app.config.ts --mode=dev --serve",
     "es:app:prod": "tsx esbuild.app.config.ts --mode=prod",

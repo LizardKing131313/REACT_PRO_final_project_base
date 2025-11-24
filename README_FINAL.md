@@ -84,7 +84,6 @@ webpack 5.102.1 compiled successfully in 11422 ms
 ```
 # 8. Запись профайлера исходного приложения
 ![До](./screenshots/before1.png)
-![До](./screenshots/before2.png)
 # 9. Стабилизировал сборку на Vite
 # 10. Стабилизировал сборку на EsBuild
 # 11. Ленивый роутинг
@@ -205,3 +204,51 @@ webpack 5.102.1 compiled successfully in 6123 ms
 ```ignorelang
   VITE v7.2.2  ready in 565 ms
 ```
+
+Сборка на Vite
+```ignorelang
+> react-final@1.0.0 vite-build
+> tsc -b && vite build
+
+vite v7.2.2 building client environment for production...
+✓ 1104 modules transformed.
+dist/index.html                                0.96 kB │ gzip:  0.43 kB
+dist/assets/quality-BuNDuxhF.svg               6.24 kB │ gzip:  2.50 kB
+dist/assets/logo-DR8_wP0j.svg                  7.03 kB │ gzip:  2.89 kB
+dist/assets/index-zD8K8sX6.css                 0.14 kB │ gzip:  0.13 kB
+dist/assets/ReviewItem-DR_TJQPk.css            0.73 kB │ gzip:  0.32 kB
+dist/assets/index-COqoa6Oq.css                 0.75 kB │ gzip:  0.40 kB
+dist/assets/index-SmvyVqHM.css                 1.75 kB │ gzip:  0.64 kB
+dist/assets/index--ZbIAiwc.css                 1.99 kB │ gzip:  0.69 kB
+dist/assets/CartItem-BUMKZpra.css              2.38 kB │ gzip:  0.83 kB
+dist/assets/ProductPageCard-D-DCdLt_.css       7.76 kB │ gzip:  2.20 kB
+dist/assets/index-BqvhOSPZ.css                26.50 kB │ gzip:  5.82 kB
+dist/assets/getMessageFromError-Bt-s8Iad.js    0.14 kB │ gzip:  0.13 kB
+dist/assets/WithProtection-BzVn04dd.js         0.38 kB │ gzip:  0.28 kB
+dist/assets/ButtonBack-CN1tvlG_.js             0.38 kB │ gzip:  0.28 kB
+dist/assets/index-CWeM5_J_.js                  0.45 kB │ gzip:  0.33 kB
+dist/assets/index-BdgtnfLy.js                  0.49 kB │ gzip:  0.35 kB
+dist/assets/index-pPvoszB_.js                  0.57 kB │ gzip:  0.41 kB
+dist/assets/ProductCardWidget-BIxUyYgg.js      0.69 kB │ gzip:  0.41 kB
+dist/assets/yup-BGgDkCtu.js                    0.86 kB │ gzip:  0.48 kB
+dist/assets/ReviewItem-PekW4uH_.js             1.08 kB │ gzip:  0.51 kB
+dist/assets/index-Dz2nKGVt.js                  2.17 kB │ gzip:  1.17 kB
+dist/assets/index-BSH6_Zm4.js                  2.19 kB │ gzip:  1.18 kB
+dist/assets/CartItem-BO9KtOjs.js               2.21 kB │ gzip:  0.81 kB
+dist/assets/index-DcNVlA7G.js                  2.51 kB │ gzip:  1.26 kB
+dist/assets/index-CvPoAdYM.js                  2.53 kB │ gzip:  0.92 kB
+dist/assets/index-BRBvGdyh.js                  4.24 kB │ gzip:  1.58 kB
+dist/assets/ProductPageCard-C8lz_nPR.js       17.43 kB │ gzip:  6.74 kB
+dist/assets/emotion-OF122Mmi.js               25.41 kB │ gzip: 10.62 kB
+dist/assets/redux-Y59gpkUn.js                 31.07 kB │ gzip: 11.50 kB
+dist/assets/react-C0c7tFOs.js                 42.47 kB │ gzip: 13.56 kB
+dist/assets/form-BUzAuarA.js                  62.69 kB │ gzip: 21.86 kB
+dist/assets/router-BhaIt-xX.js                82.44 kB │ gzip: 28.11 kB
+dist/assets/mui-BZbH-GD2.js                  176.77 kB │ gzip: 53.48 kB
+dist/assets/index-BTjMRyyR.js                268.48 kB │ gzip: 87.63 kB
+✓ built in 8.58s
+
+Process finished with exit code 0
+```
+# 16. Запись профайлера исходного приложения
+![После](./screenshots/after1.png)
