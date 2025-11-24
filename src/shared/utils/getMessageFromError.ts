@@ -1,7 +1,8 @@
 import { objectHasProperty } from './common'
 
-export const getMessageFromError = (error: unknown, defaultErrorMessage: string) => {
-  if (objectHasProperty(error, 'message') && typeof error.message === 'string') return error.message
+export const getMessageFromError = (error: unknown, defaulterror_message: string) => {
+  if (objectHasProperty(error, 'message') && typeof error.message === 'string')
+    return error.message
 
-  return defaultErrorMessage
+  return defaulterror_message
 }

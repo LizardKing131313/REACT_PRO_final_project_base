@@ -1,31 +1,29 @@
 import classNames from 'classnames'
-import { WithProtection } from 'shared/store/HOCs/WithProtection'
 import { ButtonBack } from 'shared/ui/ButtonBack'
+import { WithProtection } from 'widgets/auth'
 
-import * as styles from './ProfilePage.module.css'
-
-const s = ((styles as any).default ?? styles) as Record<string, string>
+import styles from './ProfilePage.module.css'
 
 export const ProfilePage = WithProtection(() => (
   <>
     <ButtonBack />
-    <h1 className={s['form__title']}>Мои данные</h1>
-    <form className={classNames(s['form'], s['form'])}>
-      <div className={s['form__row']}>
-        <label className={s['form__label']} htmlFor="name">
+    <h1 className={styles.form__title}>Мои данные</h1>
+    <form className={classNames(styles.form, styles.form)}>
+      <div className={styles.form__row}>
+        <label className={styles.form__label} htmlFor="name">
           {''}
           <input
-            className={s['input']}
+            className={styles.input}
             name="name"
             id="name"
             type="text"
             placeholder="Введите ваше имя"
           />
         </label>
-        <label className={s['form__label']}>
+        <label className={styles.form__label}>
           {''}
           <input
-            className={s['input']}
+            className={styles.input}
             name="about"
             id="about"
             type="text"
@@ -33,34 +31,34 @@ export const ProfilePage = WithProtection(() => (
           />
         </label>
       </div>
-      <div className={s['form__row']}>
-        <label className={s['form__label']}>
+      <div className={styles.form__row}>
+        <label className={styles.form__label}>
           {''}
           <input
-            className={s['input']}
+            className={styles.input}
             name="avatar"
             id="avatar"
             type="url"
             placeholder="Введите ссылку на аватарку"
           />
         </label>
-        <label className={s['form__label']}>
+        <label className={styles.form__label}>
           {''}
-          <input className={s['input']} name="email" id="email" type="text" placeholder="email" />
+          <input className={styles.input} name="email" id="email" type="text" placeholder="email" />
         </label>
       </div>
 
-      <button type="submit" className={classNames(s['form__btn'], s['secondary'], s['maxContent'])}>
+      <button type="submit" className={classNames(styles.form__btn, styles.secondary, styles.max_content)}>
         Сохранить
       </button>
     </form>
-    <h2 className={s['form__title']}>Изменить пароль</h2>
-    <form className={classNames(s['form'], s['form'])}>
-      <div className={classNames(s['form__row'], s['form__row_min'])}>
-        <label className={s['form__label']}>
+    <h2 className={styles.form__title}>Изменить пароль</h2>
+    <form className={classNames(styles.form, styles.form)}>
+      <div className={classNames(styles.form__row, styles.form__row_min)}>
+        <label className={styles.form__label}>
           {''}
           <input
-            className={s['input']}
+            className={styles.input}
             name="password"
             id="password"
             type="password"
@@ -68,7 +66,7 @@ export const ProfilePage = WithProtection(() => (
           />
         </label>
       </div>
-      <button type="submit" className={classNames(s['form__btn'], s['secondary'], s['maxContent'])}>
+      <button type="submit" className={classNames(styles.form__btn, styles.secondary, styles.max_content)}>
         Сохранить
       </button>
     </form>

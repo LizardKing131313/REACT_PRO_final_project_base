@@ -1,0 +1,72 @@
+.button_count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 216px;
+  height: 48px;
+  margin: 0 auto;
+  padding: 0 12px;
+  background-color: #ffffff;
+  border: 1px solid #cfd8dc;
+  border-radius: 999px;
+  box-shadow: 0 4px 8px rgb(15 23 42 / 6%);
+}
+
+.button_count_plus,
+.button_count_minus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-weight: 700;
+  font-size: 22px;
+  background-color: transparent;
+  border: none;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease-in-out,
+    transform 0.1s ease-in-out,
+    color 0.15s ease-in-out;
+}
+
+.button_count_plus:disabled {
+  cursor: default;
+  transform: none;
+  opacity: 0.4;
+}
+
+.button_count_plus:hover:not(:disabled),
+.button_count_minus:hover:not(:disabled) {
+  background-color: #f5f5f5;
+  transform: translateY(-1px);
+}
+
+.button_count_num {
+  width: 56px;
+  padding: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+
+.button_count_num:focus {
+  outline: none;
+}
+
+.button_count_num::-webkit-outer-spin-button,
+.button_count_num::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.button_count_num[type='number'] {
+  appearance: textfield;
+}

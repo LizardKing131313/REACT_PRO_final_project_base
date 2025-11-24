@@ -1,25 +1,10 @@
-import { WithProtection } from 'shared/store/HOCs/WithProtection'
-import { WithQuery } from 'shared/store/HOCs/WithQuery'
-import { useProducts } from 'shared/store/hooks/useProducts'
 import { ButtonBack } from 'shared/ui/ButtonBack'
-import { CardList } from 'widgets/CardList'
+import { WithProtection } from 'widgets/auth'
+import { ProductCardList } from 'widgets/product'
 
-const CardListWithQuery = WithQuery(CardList)
-
-export const FavoritesPage = WithProtection(() => {
-  const { isLoading, isError, products, error } = useProducts()
-
-  return (
+export const FavoritesPage = WithProtection(() => (
     <>
-      <br />
       <ButtonBack />
-      <CardListWithQuery
-        title="Избранные"
-        isLoading={isLoading}
-        isError={isError}
-        products={products}
-        error={error}
-      />
+      <ProductCardList title="Избранные" />
     </>
-  )
-})
+  ))

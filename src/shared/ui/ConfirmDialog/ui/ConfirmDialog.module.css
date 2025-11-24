@@ -19,7 +19,7 @@
     0 0 0 2px #111111;
 }
 
-.headerStripe {
+.header_stripe {
   height: 10px;
   background: linear-gradient(90deg, #ffd600, #ffb800);
 }
@@ -51,14 +51,16 @@
   gap: 8px;
 }
 
-.cancelButton,
-.confirmButton {
+.cancel_button {
   min-width: 96px;
   padding: 8px 14px;
+  color: #111111;
   font-weight: 600;
   font-size: 13px;
+  background-color: #ffffff;
   border: none;
   border-radius: 999px;
+  box-shadow: inset 0 0 0 1px #111111;
   cursor: pointer;
   transition:
     background-color 0.15s ease,
@@ -67,43 +69,21 @@
     box-shadow 0.15s ease;
 }
 
-.cancelButton {
-  color: #111111;
-  background-color: #ffffff;
-  box-shadow: inset 0 0 0 1px #111111;
-}
-
-.cancelButton:hover {
+.cancel_button:hover {
   background-color: #f5f5f5;
 }
 
-.cancelButton:active {
+.cancel_button:active {
   box-shadow: inset 0 0 0 1px #111111;
   transform: translateY(1px);
 }
 
-.confirmButton {
-  color: #111111;
-  background-color: #ffd600;
-  box-shadow: 0 2px 0 #c49d00;
-}
-
-.confirmButton:hover {
-  background-color: #ffea62;
-}
-
-.confirmButton:active {
-  box-shadow: 0 0 0 #c49d00;
-  transform: translateY(1px);
-}
-
-.cancelButton:focus-visible,
-.confirmButton:focus-visible {
+.cancel_button:focus-visible {
   outline: 2px solid #111111;
   outline-offset: 2px;
 }
 
-.closeButton {
+.close_button {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -117,6 +97,6 @@
   transition: color 0.15s ease;
 }
 
-.closeButton:hover {
+.close_button:hover {
   color: #000000;
 }

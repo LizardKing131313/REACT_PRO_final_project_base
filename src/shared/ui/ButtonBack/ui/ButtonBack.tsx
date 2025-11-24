@@ -1,12 +1,25 @@
+import { memo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { BackIcon } from '../../../assets'
 
-export const ButtonBack = () => {
+type ButtonBackProps = {
+  className?: string
+}
+
+function ButtonBackComponent({ className }: ButtonBackProps) {
   const navigate = useNavigate()
+
+  const handleClick = useCallback(async () => {
+    await navigate(-1)
+  }, [navigate])
+
   return (
-    <button onClick={() => navigate(-1)}>
+    <button type="button" onClick={handleClick} className={className}>
       <BackIcon />
     </button>
   )
 }
+
+export const ButtonBack = memo(ButtonBackComponent)
+ButtonBack.displayName = 'ButtonBack'

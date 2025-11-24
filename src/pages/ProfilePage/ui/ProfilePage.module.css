@@ -40,7 +40,7 @@ input:focus {
   font-family: 'Arial', 'Helvetica', sans-serif;
 }
 
-.errorMessage {
+.error_message {
   align-self: flex-start;
   color: red;
   font-size: 12px;
@@ -48,7 +48,7 @@ input:focus {
   text-align: end;
 }
 
-.maxContent {
+.max_content {
   width: max-content;
 }
 
@@ -87,7 +87,7 @@ input:focus {
   cursor: pointer;
 }
 
-.form__btn.pramary {
+.form__btn.primary {
   background: #ffe44d;
   border: none;
 }
@@ -97,6 +97,6 @@ input:focus {
   border: 0.5px solid #cfd8dc;
 }
 
-.form__btn.maxContent {
+.form__btn.max_content {
   width: max-content;
 }

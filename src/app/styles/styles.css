@@ -62,7 +62,7 @@ img {
   line-height: 14px;
 }
 
-.errorMessage {
+.error_message {
   align-self: flex-start;
   color: red;
   font-size: 12px;

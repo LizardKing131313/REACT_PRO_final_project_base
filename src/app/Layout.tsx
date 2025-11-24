@@ -1,6 +1,6 @@
+import { ProductSort } from 'features/product'
 import { Outlet } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-import { Sort } from 'shared/ui/Sort'
 import { Footer } from 'widgets/Footer'
 import { Header } from 'widgets/Header'
 
@@ -8,7 +8,7 @@ export function Layout() {
   return (
     <>
       <Header />
-      <Sort />
+      <ProductSort />
       <Outlet />
       <ToastContainer
         position="top-right"

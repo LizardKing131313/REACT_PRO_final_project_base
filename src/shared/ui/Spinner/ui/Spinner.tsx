@@ -1,16 +1,20 @@
 import classNames from 'classnames'
+import { memo } from 'react'
 
-import * as styles from './Spinner.module.css'
+import styles from './Spinner.module.css'
 
-const s = ((styles as any).default ?? styles) as Record<string, string>
-
-export const Spinner = () => (
-  <div className={classNames(s['wrapper'])}>
-    <div className={classNames(s['loader'])}>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+function SpinnerComponent() {
+  return (
+    <div className={classNames(styles.wrapper)}>
+      <div className={classNames(styles.loader)}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </div>
-)
+  )
+}
+
+export const Spinner = memo(SpinnerComponent)
+Spinner.displayName = 'Spinner'

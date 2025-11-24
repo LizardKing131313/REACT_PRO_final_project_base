@@ -1,0 +1,5 @@
+export * from './model/types'
+export { ProductCard } from './ui/ProductCard/ProductCard'
+export { ProductPrice } from './ui/ProductPrice/ProductPrice'
+export { ProductDelivery } from './ui/ProductDelivery/ProductDelivery'
+export { ProductDescription } from './ui/ProductDescription/ProductDescription'

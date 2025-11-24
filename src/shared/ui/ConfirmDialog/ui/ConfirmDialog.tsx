@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
+import { PrimaryButton } from '../../PrimaryButton'
+
 import styles from './ConfirmDialog.module.css'
 
 type Props = {
@@ -47,12 +49,12 @@ export function ConfirmDialog({
     <div className={styles.backdrop} onClick={handleBackdropClick}>
       <div className={styles.dialog}>
         <button type="button"
-                className={styles.closeButton}
+                className={styles.close_button}
                 onClick={onCancel}
                 aria-label="Закрыть">
           ✕
         </button>
-        <div className={styles.headerStripe} />
+        <div className={styles.header_stripe} />
         <div className={styles.content}>
           <div className={styles.title}>
             {title ?? 'Подтвердить действие?'}
@@ -61,12 +63,12 @@ export function ConfirmDialog({
             {description ?? 'Это действие необратимо.'}
           </div>
           <div className={styles.actions}>
-            <button type="button" className={styles.cancelButton} onClick={onCancel}>
+            <button type="button" className={styles.cancel_button} onClick={onCancel}>
               {cancelText}
             </button>
-            <button type="button" className={styles.confirmButton} onClick={onConfirm}>
+            <PrimaryButton onClick={onConfirm}>
               {confirmText}
-            </button>
+            </PrimaryButton>
           </div>
         </div>
       </div>

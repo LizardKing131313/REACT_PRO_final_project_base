@@ -2,20 +2,19 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { Avatar, Box, Container, Link, TextField, Typography } from '@mui/material'
-import type { FC } from 'react'
+import { useSignInMutation } from 'features/auth'
+import { userActions } from 'features/user'
 import type { SubmitHandler } from 'react-hook-form'
 import { Controller, useForm } from 'react-hook-form'
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { useSignInMutation } from 'shared/store/api/authApi'
-import { userActions } from 'shared/store/slices/user'
 import { useAppDispatch } from 'shared/store/utils'
 import { getMessageFromError } from 'shared/utils'
 
 import type { SignInFormValues } from '../utils/types'
 import { signInFormSchema } from '../utils/validator'
 
-export const SignInForm: FC = () => {
+export const SignInForm = () => {
   const dispatch = useAppDispatch()
   const location = useLocation()
   // navigate поможет сделать редирект в нужный момент

@@ -1,0 +1,42 @@
+.like {
+  display: flex;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.like svg {
+  transition: fill 0.15s ease-in-out, transform 0.1s ease-in-out, opacity 0.15s ease-in-out;
+  fill: #ffffff;
+}
+
+.like svg path:first-child {
+  fill: #7b8e98;
+}
+
+.like_is_active svg {
+  fill: #f44336;
+}
+
+.like_is_active svg path:first-child {
+  fill: #f44336;
+}
+
+.like:disabled svg {
+  transform: none;
+}
+
+.like:not(:disabled):hover svg path:first-child {
+  fill: #ff8a80;
+}
+
+.like:not(:disabled):active svg {
+  transform: scale(0.9);
+}
+
+.like:disabled {
+  cursor: default;
+  opacity: 0.5;
+}

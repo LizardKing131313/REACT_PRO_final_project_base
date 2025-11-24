@@ -1,30 +1,35 @@
 import classNames from 'classnames'
-import { cartSelectors } from 'shared/store/slices/cart'
+import { cartSelectors } from 'features/cart/slice/cart'
 import { useAppSelector } from 'shared/store/utils'
+import { ButtonBack } from 'shared/ui/ButtonBack'
+import { CartAmount, CartList } from 'widgets/cart'
 
-import { CartAmount } from './CartAmount'
-import { CartList } from './CartList'
-
-import * as styles from './CartPage.module.css'
-
-const s = ((styles as any).default ?? styles) as Record<string, string>
+import styles from './CartPage.module.css'
 
 export const CartPage = () => {
   const products = useAppSelector(cartSelectors.getCartProducts)
 
   if (!products.length) {
-    return <h1 className="header-title">Товаров нет корзине</h1>
+    return (
+      <>
+        <ButtonBack />
+        <h1 className="header_title">Товаров нет корзине</h1>
+      </>
+    )
   }
 
   return (
-    <div className={classNames(s['content'], s['container'])}>
-      <div className={classNames(s['content-cart'])}>
-        <div className={classNames(s['cart-title'])}>
-          <span>{products.length}</span> в корзине
+    <>
+      <ButtonBack />
+      <div className={classNames(styles.content, styles.container)}>
+        <div className={classNames(styles.content_cart)}>
+          <div className={classNames(styles.cart_title)}>
+            <span>{products.length}</span> в корзине
+          </div>
+          <CartList products={products} />
+          <CartAmount products={products} />
         </div>
-        <CartList products={products} />
-        <CartAmount products={products} />
       </div>
-    </div>
+    </>
   )
 }
